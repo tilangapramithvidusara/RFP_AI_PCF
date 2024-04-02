@@ -1,0 +1,29 @@
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    background-color: #ffffff; /* Header color */
+    font-weight: 500;
+  }
+  
+  .custom-table .even-row {
+    background-color: #f6f9fa; /* Even row color */
+  }
+  
+  .custom-table .odd-row {
+    background-color: #ffffff; /* Odd row color */
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: none; /* Remove borders */
+  }
+  

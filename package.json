@@ -13,6 +13,7 @@
     "refreshTypes": "pcf-scripts refreshTypes"
   },
   "dependencies": {
+    "antd": "^5.16.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
