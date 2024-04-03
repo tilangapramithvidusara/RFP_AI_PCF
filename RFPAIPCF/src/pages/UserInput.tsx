@@ -18,7 +18,6 @@ const UserInput: React.FC = () => {
 
   const handleOnSubmit = async () => {
     const jsonConvertedString = TextToJson({ userInputText });
-    console.log(jsonConvertedString);
     try {
       setLoading(true);
       const responseON = await GetResults(jsonConvertedString);
@@ -26,20 +25,20 @@ const UserInput: React.FC = () => {
       if (responseON === "{No record found}") {
         message.info("Not Found");
       } else {
-        console.log("RES==>", responseON);
         const response = JSON.parse(responseON);
         if (response && response.requirement) {
-          console.log("Respone Req", response.requirement);
           const id = response.Id;
           const requirement = response.requirement.split(",")[0].trim();
           const seerRequirement = response.requirement.split(",")[1].trim();
           const seerRFPResponse = "Seer RFP Response 1";
-          console.log("Requirement From RESPONSE", requirement);
-          console.log("Seer Requirement from Response", seerRequirement);
-          const newData = [{ id, requirement, seerRequirement, seerRFPResponse }];
+          const newData = [
+            { id, requirement, seerRequirement, seerRFPResponse },
+          ];
           setData(newData);
         } else {
-          console.error("Invalid response format: requirement property is missing");
+          console.error(
+            "Invalid response format: requirement property is missing"
+          );
           message.error("Invalid response format");
         }
       }
@@ -49,10 +48,6 @@ const UserInput: React.FC = () => {
       message.error("Error getting response");
     }
   };
-  
-  
-  
-  
 
   return (
     <div className="userInputTextArea">
@@ -69,11 +64,7 @@ const UserInput: React.FC = () => {
         </Flex>
       </div>
       <div>
-      {loading ? (
-          <Spin />
-        ) : (
-        <Table data={data.length > 0 ? data : []} />
-        )}
+        {loading ? <Spin /> : <Table data={data.length > 0 ? data : []} />}
       </div>
     </div>
   );

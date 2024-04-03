@@ -1,36 +1,36 @@
 .custom-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .custom-table th,
-  .custom-table td {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .custom-table th {
-    background-color: #ffffff; /* Header color */
-    font-weight: 500;
-  }
-  
-  .custom-table .even-row {
-    background-color: #f6f9fa; /* Even row color */
-  }
-  
-  .custom-table .odd-row {
-    background-color: #ffffff; /* Odd row color */
-  }
-  
-  .custom-table th,
-  .custom-table td {
-    border: none; /* Remove borders */
-  }
+  border-collapse: collapse;
+  width: 100%;
+}
 
-  .popUpBtn{
-    padding-left: 5px;
-    background: #ffffff;
-    border-color: #0093FE;
-    color: #0093FE;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
-  }
+.custom-table th,
+.custom-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #ffffff; 
+  font-weight: 500;
+}
+
+.custom-table .even-row {
+  background-color: #f6f9fa; 
+}
+
+.custom-table .odd-row {
+  background-color: #ffffff; 
+}
+
+.custom-table th,
+.custom-table td {
+  border: none; 
+}
+
+.popUpBtn {
+  padding-left: 5px;
+  background: #ffffff;
+  border-color: #0093fe;
+  color: #0093fe;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+}

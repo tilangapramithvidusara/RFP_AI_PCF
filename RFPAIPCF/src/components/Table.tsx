@@ -51,8 +51,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
             >
               <td>{row.requirement}</td>
               <td>
-                <Button>{row.seerRequirement} <CloseCircleOutlined /></Button>
-                <Button className="popUpBtn" icon={<PlusOutlined /> } onClick={handlePopUpOpen} />
+                <Button>
+                  {row.seerRequirement} <CloseCircleOutlined />
+                </Button>
+                <Button
+                  className="popUpBtn"
+                  icon={<PlusOutlined />}
+                  onClick={handlePopUpOpen}
+                />
               </td>
               <td>{row.seerRFPResponse}</td>
             </tr>
@@ -65,7 +71,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
         onOk={handlePopUpSubmit}
         onCancel={handlePopUpCancel}
       >
-       <Input.TextArea
+        <Input.TextArea
           className="modalTextArea"
           rows={6}
           placeholder="Enter Your Text Here..."
