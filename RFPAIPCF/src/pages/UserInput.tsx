@@ -3,11 +3,13 @@ import { Input, Button, Flex } from "antd";
 import "../styles/userInputStyles.css";
 import TextToJson from "../utils/TextToJson";
 import Table from "../components/Table";
+import { GetResults } from "../api/endpoints";
 
 const { TextArea } = Input;
 
 const UserInput: React.FC = () => {
   const [userInputText, setUserInputText] = useState<string>("");
+  
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInputText(e.target.value);
@@ -16,6 +18,7 @@ const UserInput: React.FC = () => {
   const handleOnSubmit = () => {
     const jsonConvertedString = TextToJson({ userInputText });
     console.log(jsonConvertedString);
+    const respsonse = GetResults(jsonConvertedString);
   };
 
   useEffect(() => {

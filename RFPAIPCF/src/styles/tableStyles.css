@@ -26,4 +26,11 @@
   .custom-table td {
     border: none; /* Remove borders */
   }
-  
+
+  .popUpBtn{
+    padding-left: 5px;
+    background: #ffffff;
+    border-color: #0093FE;
+    color: #0093FE;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+  }
