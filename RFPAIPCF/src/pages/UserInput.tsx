@@ -21,11 +21,15 @@ const UserInput: React.FC = () => {
     try {
       setLoading(true);
       const responseON = await GetResults(jsonConvertedString);
+      const cleanedResponseON = responseON.replace(/[^\x20-\x7E]/g, '').trim();
+      console.log("Cleaned JSON",cleanedResponseON);
+      console.log("Responnse ON",responseON)
       setLoading(false);
-      if (responseON === "{No record found}") {
+      if (cleanedResponseON === "{No record found}") {
         message.info("Not Found");
+        setData([]);
       } else {
-        const response = JSON.parse(responseON);
+        const response = JSON.parse(cleanedResponseON);
         if (response && response.requirement) {
           const id = response.Id;
           const requirement = response.requirement.split(",")[0].trim();
@@ -59,12 +63,12 @@ const UserInput: React.FC = () => {
       <div className="submitBtn">
         <Flex gap="small" wrap="wrap">
           <Button type="primary" onClick={handleOnSubmit}>
-            Submit
+            Submit Requirement
           </Button>
         </Flex>
       </div>
       <div>
-        {loading ? <Spin /> : <Table data={data.length > 0 ? data : []} />}
+      {loading ? <Spin /> : data.length > 0 && <Table data={data} />}
       </div>
     </div>
   );

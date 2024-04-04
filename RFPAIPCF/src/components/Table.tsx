@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/tableStyles.css";
 import { Modal, Button, Input } from "antd";
 import { PlusOutlined, CloseCircleOutlined } from "@ant-design/icons";
@@ -17,6 +17,17 @@ interface ResponseData {
 const Table: React.FC<TableProps> = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [textAreaValue, setTextAreaValue] = useState("");
+  const [seerRequirementsMap, setSeerRequirementsMap] = useState<Record<string, string[]>>({});
+
+  useEffect(() => {
+    console.log("Data:", data);
+    const initialMap: Record<string, string[]> = {};
+    data.forEach((row) => {
+      initialMap[row.id] = row.seerRequirement.split(",");
+    });
+    console.log("Initial Map:", initialMap);
+    setSeerRequirementsMap(initialMap);
+  }, [data]);
 
   const handlePopUpOpen = () => {
     setIsModalOpen(true);
@@ -33,6 +44,15 @@ const Table: React.FC<TableProps> = ({ data }) => {
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextAreaValue(e.target.value);
   };
+
+  const handleRequirementDelete = (id: string) => {
+    setSeerRequirementsMap((prevMap) => {
+      const updatedMap = { ...prevMap };
+      
+      delete updatedMap[id];
+      return updatedMap;
+    });
+  }
   return (
     <>
       <table className="custom-table">
@@ -51,9 +71,13 @@ const Table: React.FC<TableProps> = ({ data }) => {
             >
               <td>{row.requirement}</td>
               <td>
-                <Button>
-                  {row.seerRequirement} <CloseCircleOutlined />
-                </Button>
+              {seerRequirementsMap[row.id]?.map((seerReq, idx) => (
+                  <div key={idx}>
+                    <Button className="seerReq">
+                      {seerReq} <CloseCircleOutlined className="deleteReq" onClick={() => handleRequirementDelete(row.id)}/>
+                    </Button>
+                  </div>
+                ))}
                 <Button
                   className="popUpBtn"
                   icon={<PlusOutlined />}

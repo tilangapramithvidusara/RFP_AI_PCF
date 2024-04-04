@@ -28,9 +28,28 @@
 }
 
 .popUpBtn {
-  padding-left: 5px;
+  padding: 5px 6px 5px 6px;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  border: 1px;
   background: #ffffff;
-  border-color: #0093fe;
-  color: #0093fe;
+  border-color: #00AEA7;
+  color: #00AEA7;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+  gap: 5px;
+}
+.seerReq{
+  border: 1px;
+  height: 27px;
+  border-radius: 5px;
+  padding: 5px, 6px, 5px, 6px;
+  color:#0093FE;
+  gap: 5px;
+}
+
+
+
+.deleteReq{
+  color: #F74E4D;
 }
