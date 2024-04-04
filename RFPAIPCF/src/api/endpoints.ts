@@ -2,7 +2,7 @@ export const GetResults = async (reqTextJs: any): Promise<any> => {
   try {
     console.log(reqTextJs);
     const response = await fetch(
-      // "https://pdfscan.azurewebsites.net/api/AzureOpenAiFindingTheMatchingRecordInDataset?code=5vkvV6Uedfkt58nuwAMjRltZJgbtlyRq4AqPvDTHkSEiAzFuDZJ8Vg==",
+      "https://pdfscan.azurewebsites.net/api/AzureOpenAiFindingTheMatchingRecordInDataset?code=5vkvV6Uedfkt58nuwAMjRltZJgbtlyRq4AqPvDTHkSEiAzFuDZJ8Vg==",
       {
         method: "POST",
         headers: {
