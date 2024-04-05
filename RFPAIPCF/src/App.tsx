@@ -1,10 +1,8 @@
 import * as React from "react";
 import UserInput from "./pages/UserInput";
 
-class App extends React.Component {
-  public render() {
+const App: React.FC = () => {
     return <UserInput />;
-  }
 }
 
 export default App;

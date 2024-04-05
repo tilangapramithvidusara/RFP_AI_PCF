@@ -1,0 +1,25 @@
+{
+    "tableHeaders": {
+      "requirements": "REQUIREMENTS",
+      "seerRequirements": "SEER REQUIREMENTS",
+      "seerRfpResponse": "SEER RFP RESPONSE"
+    },
+    "modalTitle": "Enter Your Text",
+    "modalPlaceholder": "Enter Your Text Here...",
+    "placeholders": {
+        "userInput": "Enter Your Text Here..."
+      },
+      "buttonLabels": {
+        "submitRequirement": "Submit Requirement"
+      },
+      "messages": {
+        "notFound": "Not Found",
+        "invalidFormat": "Invalid response format",
+        "errorGettingResponse": "Error getting response"
+      },
+      "modalTitles": {
+        "enterText": "Enter Your Text"
+      },
+      "seerResponse": "Seer RFP Response 1"
+  }
+  

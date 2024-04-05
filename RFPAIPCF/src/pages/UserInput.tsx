@@ -4,6 +4,7 @@ import "../styles/userInputStyles.css";
 import TextToJson from "../utils/TextToJson";
 import Table from "../components/Table";
 import { GetResults } from "../api/endpoints";
+import languageConstants from "../constants/language.json";
 
 const { TextArea } = Input;
 
@@ -21,20 +22,20 @@ const UserInput: React.FC = () => {
     try {
       setLoading(true);
       const responseON = await GetResults(jsonConvertedString);
-      const cleanedResponseON = responseON.replace(/[^\x20-\x7E]/g, '').trim();
-      console.log("Cleaned JSON",cleanedResponseON);
-      console.log("Responnse ON",responseON)
+      const cleanedResponseON = responseON?.replace(/[^\x20-\x7E]/g, "").trim();
+      console.log("Cleaned JSON", cleanedResponseON);
+      console.log("Responnse ON", responseON);
       setLoading(false);
       if (cleanedResponseON === "{No record found}") {
-        message.info("Not Found");
+        message.info(languageConstants.messages.notFound);
         setData([]);
       } else {
         const response = JSON.parse(cleanedResponseON);
-        if (response && response.requirement) {
-          const id = response.Id;
-          const requirement = response.requirement.split(",")[0].trim();
-          const seerRequirement = response.requirement.split(",")[1].trim();
-          const seerRFPResponse = "Seer RFP Response 1";
+        if (response && response?.requirement) {
+          const id = response?.Id;
+          const requirement = response?.requirement.split(",")[0].trim();
+          const seerRequirement = response?.requirement.split(",")[1].trim();
+          const seerRFPResponse = languageConstants?.seerResponse;
           const newData = [
             { id, requirement, seerRequirement, seerRFPResponse },
           ];
@@ -43,13 +44,13 @@ const UserInput: React.FC = () => {
           console.error(
             "Invalid response format: requirement property is missing"
           );
-          message.error("Invalid response format");
+          message.error(languageConstants?.messages?.invalidFormat);
         }
       }
     } catch (error) {
       setLoading(false);
       console.error("Error getting response", error);
-      message.error("Error getting response");
+      message.error(languageConstants?.messages?.errorGettingResponse);
     }
   };
 
@@ -57,18 +58,18 @@ const UserInput: React.FC = () => {
     <div className="userInputTextArea">
       <TextArea
         rows={10}
-        placeholder="Enter Your Text Here..."
+        placeholder={languageConstants?.placeholders?.userInput}
         onChange={handleTextAreaChange}
       />
       <div className="submitBtn">
         <Flex gap="small" wrap="wrap">
           <Button type="primary" onClick={handleOnSubmit}>
-            Submit Requirement
+            {languageConstants?.buttonLabels?.submitRequirement}
           </Button>
         </Flex>
       </div>
       <div>
-      {loading ? <Spin /> : data.length > 0 && <Table data={data} />}
+        {loading ? <Spin /> : data?.length > 0 && <Table data={data} />}
       </div>
     </div>
   );
